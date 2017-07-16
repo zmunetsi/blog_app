@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlogApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%= render "layouts/nav" %>
+    <% [:info, :error, :success, :danger].each do |key| %>
+      <% if flash[key] %>
+      <div class="text-center alert alert-<%= key %>" id="flash">
+        <h3><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+<%= flash[key] %></h3>
+      </div>
+      <% end %>
+    <% end %>
+      <%= yield %>
+      <p><%= render "layouts/footer" %></p>
+    </div>
+  </body>
+</html>
