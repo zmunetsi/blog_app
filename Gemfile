@@ -15,6 +15,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -26,6 +27,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3'
+gem "font-awesome-rails"
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'

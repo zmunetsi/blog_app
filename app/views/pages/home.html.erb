@@ -1,2 +1,56 @@
-<h1>Welcome to my blog</h1>
-<button type="button" name="button"><%= link_to "Create a Post", new_post_path %></button>
+
+
+  <div class="uppernav">
+    <button type="button" name="button"><%= link_to "Create Post", new_post_path %></button>
+  </div>
+<br>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Welcome to HutofCode Blog <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-heart"></i></button></h1>
+      <p>This is a multi-user blog where users get to share their coding stories with the community</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6">
+      <%= link_to image_tag('friends circle.jpg', alt: "friends image", class: "img img-responsive" ), about_path %>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <h3>Latest Posts</h3>
+      <table class= "table">
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.title, post %></td>
+          </tr>
+        <% end %>
+      </table> <br>
+      <button type="button" class= "btn btn-sm btn-warning" name="button"><%= link_to 'View all Posts',posts_path %> </button>
+    </div>
+    <div class="col-sm-12 cl-md-3">
+
+    </div>
+  </div>
+
+</div><br>
+<!-- Call to Action -->
+<div class="action">
+  <h2 class = "text-center">How to get started?</h2><br>
+  <div class=" text-center row">
+    <div class="col-md-4">
+      <%=link_to "<button type='button' class='btn btn-info btn-circle btn-lg'><i class='glyphicon glyphicon-plane'></i></button>".html_safe, new_user_registration_path %>
+      <h3>Sign Up</h3>
+    </div>
+    <div class="col-md-4">
+      <%=link_to "<button type='button' class='btn btn-danger btn-circle btn-lg'><i class='glyphicon glyphicon-user'></i></button>".html_safe, new_user_session_path %>
+
+      <h3>Login</h3>
+    </div>
+    <div class="col-md-4">
+      <%=link_to "<button type='button' class='btn btn-success btn-circle btn-lg'><i class='glyphicon glyphicon-list-alt'></i></button>".html_safe, new_post_path %>
+      <h3>Create your posts and Share with the world</h3>
+    </div>
+  </div>
+</div>

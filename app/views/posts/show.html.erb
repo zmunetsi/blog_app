@@ -1,6 +1,10 @@
 
-<div class="">
+<div class="single_post">
   <h2 class="text-center"><%= @post.title %></h2>
   <h5 class="text-center">Created at:<%= @post.created_at.strftime('%b %d, %Y') %></h5>
   <div><%= raw @post.body %></div>
+</div>
+
+<div class="comments_form">
+  <%= render "comments/form" %>
 </div>
