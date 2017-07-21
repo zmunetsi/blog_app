@@ -1,7 +1,7 @@
 #app/controllers/posts_controller.rb
 
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update, :show, :delete]
+  before_action :find_post, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   # Index action to render all posts
   def index

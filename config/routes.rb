@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/about'=> 'pages#about'
 
   get '/contact'=> 'pages#contact'
-
+  get '/users/dashboard'=> 'users#dashboard'
   resources :posts
   resources :posts do
     resources :comments
