@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   private
 
   def set_admin
-    if current_user.email ==  "zunguziramunetsi@gmail.com"
+    if current_user.email ==  "admin@gmail.com"
        current_user.update_attribute :admin, true
     end
 
