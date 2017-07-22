@@ -35,10 +35,10 @@ class PostsController < ApplicationController
   # Update action updates the post with the new information
   def update
     if @post.update_attributes(post_params)
-      flash[:notice] = "Successfully updated post!"
+      flash[:success] = "Successfully updated post!"
       redirect_to post_path(@post)
     else
-      flash[:alert] = "Error updating post!"
+      flash[:danger] = "Error updating post!"
       render :edit
     end
   end
@@ -50,10 +50,10 @@ class PostsController < ApplicationController
   # The destroy action removes the post permanently from the database
   def destroy
     if @post.destroy
-      flash[:notice] = "Successfully deleted post!"
-      redirect_to posts_path
+      flash[:success] = "Successfully deleted post!"
+      redirect_to users_dashboard_path
     else
-      flash[:alert] = "Error updating post!"
+      flash[:danger] = "Error updating post!"
     end
   end
 
