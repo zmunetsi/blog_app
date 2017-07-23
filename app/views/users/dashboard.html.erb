@@ -9,7 +9,7 @@
     </div>
     <div class="posts col-md-9">
       <h1>My Posts</h1>
-      <% @user.posts.each do |post| %>
+      <% @user_posts.each do |post| %>
       <hr>
         <h3><%= post.title %></h3>
         <p><%= raw post.body.truncate(200) %></p>
@@ -19,9 +19,19 @@
 
       <% end %>
       <hr>
+      <div class="apple_pagination">
+          <div class="page_info">
+            <%= page_entries_info @posts %>
+          </div>
+          <%= will_paginate @posts, :container => false %>
+       </div>
+        <hr>
+
       <div class="row posts">
         <h2>All Posts</h2>
         <% @posts.each do |post| %>
+
+          <hr>
           <h3><%= post.title %></h3>
           <p><%= raw post.body.truncate(100) %></p>
           <%= link_to "View Post", post_path(post) %> |
@@ -62,7 +72,7 @@
 
       <div class="row">
         <h1>My Posts</h1>
-        <% @user.posts.each do |post| %>
+        <% @user_posts.each do |post| %>
         <hr>
           <h3><%= post.title %></h3>
           <p><%= raw post.body.truncate(200) %></p>
@@ -71,7 +81,17 @@
           <%= link_to 'Delete Post', post ,method: :delete, data: { confirm: 'Are you sure?'} %>
 
         <% end %>
+        <hr>
 
+        <div class="apple_pagination">
+            <div class="page_info">
+              <%= page_entries_info @posts %>
+            </div>
+            <%= will_paginate @posts, :container => false %>
+         </div>
+
+         <hr>
+         
       </div>
 
 

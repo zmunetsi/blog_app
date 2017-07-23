@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = User.find(current_user.id)
+    @user_posts = @user.posts.paginate(:page => params[:page], :per_page => 5)
+
     @posts = Post.paginate(:page => params[:page], :per_page => 5)
     @users = User.all
   end
