@@ -1,5 +1,5 @@
 
-  <div class=" ">
+  <div class = "container" >
     <% @posts.each do |post| %>
     <div class="col-xs-12">
       <div class="text-center">
@@ -8,7 +8,7 @@
       </div>
 
       <div>
-        <%= raw(post.body).truncate(358) %>
+        <%= raw(post.body.truncate(358)) %>
       </div>
 
       <div class="text-center">
@@ -17,4 +17,14 @@
       <br>
     </div>
     <% end %>
+
   </div>
+
+  <div class="apple_pagination">
+      <div class="page_info">
+        <%= page_entries_info @posts %>
+      </div>
+      <%= will_paginate @posts, :container => false %>
+   </div>
+
+ </div>

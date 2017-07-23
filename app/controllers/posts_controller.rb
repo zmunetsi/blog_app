@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   # Index action to render all posts
   def index
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   # New action for creating post
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
     end
   end
 
-  
+
   def post_params
     params.require(:post).permit(:title, :body)
   end
