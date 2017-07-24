@@ -55,6 +55,8 @@
         <% @users.each do |user| %>
           <p>
             <%= user.email %> |
+            <%= link_to "Delete User", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
+
 
           </p>
         <% end %>
@@ -91,7 +93,7 @@
          </div>
 
          <hr>
-         
+
       </div>
 
 
