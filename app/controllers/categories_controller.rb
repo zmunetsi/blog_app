@@ -41,6 +41,7 @@ class CategoriesController < ApplicationController
 
   # The show action renders the individual post after retrieving the the id
   def show
+    @cat_posts = @cat.posts.paginate(:page => params[:page], :per_page => 10)
   end
 
   # The destroy action removes the post permanently from the database

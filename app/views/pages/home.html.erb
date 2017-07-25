@@ -15,22 +15,27 @@
 
   <div class="row">
 
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-lg-6">
       <%= link_to image_tag('friends circle.jpg', alt: "friends image", class: "img img-responsive" ), about_path %>
     </div>
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-lg-4">
       <h3>Latest Posts</h3>
-      <table class= "table">
+      <table class= "table table-responsive">
         <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to post.title, post %></td>
+            <td><%= link_to post.title.truncate(25), post %></td>
           </tr>
         <% end %>
       </table> <br>
       <button type="button" class= "btn btn-sm btn-warning" name="button"><%= link_to 'View all Posts',posts_path %> </button>
     </div>
-    <div class="col-sm-12 cl-md-3">
+    <div class="col-sm-12 col-lg-2">
+      <h3>Categories</h3>
+      <% @categories.each do |cat| %>
 
+          <h4><%= link_to cat.name, cat %><h4>
+
+      <% end %>
     </div>
   </div>
 
