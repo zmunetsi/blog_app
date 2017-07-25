@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :categories
 
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 

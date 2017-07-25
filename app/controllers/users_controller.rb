@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
     @posts = Post.paginate(:page => params[:page], :per_page => 5)
     @users = User.all
+    
   end
-
 
   def destroy
     if @user.destroy
@@ -32,4 +32,6 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
+
+
 end

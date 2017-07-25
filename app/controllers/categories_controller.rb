@@ -1,33 +1,27 @@
-#app/controllers/posts_controller.rb
-
-class PostsController < ApplicationController
+class CategoriesController < ApplicationController
+  before_action :find_cat, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_post, only: [:edit, :update, :show, :destroy]
-
   # Index action to render all posts
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 10)
-
+    @categories = Category.paginate(:page => params[:page], :per_page => 10)
   end
 
   # New action for creating post
   def new
-    @post = Post.new
+    @category = Category.new
   end
 
   # Create action saves the post into database
    def create
+     @category = Category.new(cat_params)
 
-    @post = Post.new(post_params)
-    @post.user = current_user
-
-    if @post.save
-      flash[:danger] = "You have successfully created a post"
-      redirect_to post_path(@post)
-    else
-      flash[:error] = "Error creating new post!"
-      render :new
-    end
+     if @category.save
+       flash[:danger] = "You have successfully created a category"
+       redirect_to users_dashboard_path
+     else
+       flash[:error] = "Error creating new category!"
+       render :new
+     end
    end
 
   # Edit action retrives the post and renders the edit page
@@ -60,20 +54,11 @@ class PostsController < ApplicationController
   end
 
 
-  def post_params
-    params.require(:post).permit(:title, :body, :category_id)
-  end
-
-  def find_post
-    @post = Post.find(params[:id])
-  end
-
   def cat_params
     params.require(:category).permit(:name, :description)
   end
 
   def find_cat
-    @post = Category.find(params[:id])
+    @cat = Category.find(params[:id])
   end
-
 end
